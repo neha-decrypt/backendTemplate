@@ -1,0 +1,4 @@
+1) Need to have docker installed
+2) Run redis-stack in docker
+    - sudo docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+    - sudo docker exec -it redis-stack redis-cli
