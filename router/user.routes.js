@@ -1,4 +1,4 @@
-const { UserController } = require('../controllers/user.controller');
+
 const { verifytoken } = require('../middleware/auth.middleware');
 
 

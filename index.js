@@ -1,11 +1,14 @@
 require('dotenv').config()
 const express = require('express'),
     socketio = require('socket.io'),
-    router = require('./routes.js');
+    router = require('./routes.js'),
+    cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
+
 
 var app = express();
 
-
+app.use(cookieParser());
 var io = socketio(server);
 
 const session = require('express-session');
@@ -33,7 +36,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    limit: "16mb",
+    extended: true,
+    parameterLimit: 50000,
+}))
 app.use(errorHandler)
 app.use('/', router);
 
